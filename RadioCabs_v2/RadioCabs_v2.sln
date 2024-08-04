@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationServices", "AuthenticationServices\AuthenticationServices.csproj", "{CAA59375-15FB-409D-A352-C1FC3A47EDEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationServices", "NotificationServices\NotificationServices.csproj", "{B7C9FD13-0709-4141-A4A5-69BBA6933DB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyServices", "CompanyServices\CompanyServices.csproj", "{8A29C226-C766-425B-8E44-C5DB6019BE50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisClient", "RedisClient\RedisClient.csproj", "{178755B6-40B9-46FE-A3DA-4816BACDEAF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentServices", "PaymentServices\PaymentServices.csproj", "{97EEF378-9507-45EC-8D78-455A33B515D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackServices", "FeedbackServices\FeedbackServices.csproj", "{793DEDE9-2BCF-4DF0-B39A-A59C38675A36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAA59375-15FB-409D-A352-C1FC3A47EDEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA59375-15FB-409D-A352-C1FC3A47EDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA59375-15FB-409D-A352-C1FC3A47EDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA59375-15FB-409D-A352-C1FC3A47EDEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7C9FD13-0709-4141-A4A5-69BBA6933DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C9FD13-0709-4141-A4A5-69BBA6933DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C9FD13-0709-4141-A4A5-69BBA6933DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C9FD13-0709-4141-A4A5-69BBA6933DB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A29C226-C766-425B-8E44-C5DB6019BE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A29C226-C766-425B-8E44-C5DB6019BE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A29C226-C766-425B-8E44-C5DB6019BE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A29C226-C766-425B-8E44-C5DB6019BE50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{178755B6-40B9-46FE-A3DA-4816BACDEAF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{178755B6-40B9-46FE-A3DA-4816BACDEAF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{178755B6-40B9-46FE-A3DA-4816BACDEAF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{178755B6-40B9-46FE-A3DA-4816BACDEAF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97EEF378-9507-45EC-8D78-455A33B515D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97EEF378-9507-45EC-8D78-455A33B515D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97EEF378-9507-45EC-8D78-455A33B515D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97EEF378-9507-45EC-8D78-455A33B515D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{793DEDE9-2BCF-4DF0-B39A-A59C38675A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793DEDE9-2BCF-4DF0-B39A-A59C38675A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793DEDE9-2BCF-4DF0-B39A-A59C38675A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793DEDE9-2BCF-4DF0-B39A-A59C38675A36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
