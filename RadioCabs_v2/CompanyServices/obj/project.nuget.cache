@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bCzgDl63Lr3PlqETX0CL81ciPUXEcHJspqryzJ+WY6ENxC51aUjyoZEHAumBnFBMps1pADX7Yvlm91F/lzN5Mw==",
+  "dgSpecHash": "Q6UxwtIYqeK6bx8+vh7OfALHA9uQiUY9Txf8gWKMrJVjt1mJ9gBTgd07yqEZSXpMzf/BSlRKkpyAI1KZm99Pbg==",
   "success": true,
-  "projectFilePath": "D:\\G1_RadioCabs\\RadioCabs_v2\\CompanyServices\\CompanyServices.csproj",
+  "projectFilePath": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\CompanyServices\\CompanyServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Monster\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Monster\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

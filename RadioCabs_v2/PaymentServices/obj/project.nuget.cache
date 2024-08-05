@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XgDBtzoLKzW90hvE0J746zdCUVSCNy9Dsnis/dUAGvDJY0LnCYmHImSivj9Oy+KBcE65NGikGC0TZb8iWljtfA==",
+  "dgSpecHash": "/0b3Yy1/BM/AVtrHt3Q1S2MiTLBASmLDEL8jfMqBFDMrqZRLAnMeVlQEs88+FKSme4QjMUcFK3SYBwpwowJEbw==",
   "success": true,
-  "projectFilePath": "D:\\G1_RadioCabs\\RadioCabs_v2\\PaymentServices\\PaymentServices.csproj",
+  "projectFilePath": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\PaymentServices\\PaymentServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Monster\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Monster\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

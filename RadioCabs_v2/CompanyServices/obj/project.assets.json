@@ -11132,11 +11132,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\G1_RadioCabs\\RadioCabs_v2\\CompanyServices\\CompanyServices.csproj",
+      "projectUniqueName": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\CompanyServices\\CompanyServices.csproj",
       "projectName": "CompanyServices",
-      "projectPath": "D:\\G1_RadioCabs\\RadioCabs_v2\\CompanyServices\\CompanyServices.csproj",
+      "projectPath": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\CompanyServices\\CompanyServices.csproj",
       "packagesPath": "C:\\Users\\Monster\\.nuget\\packages\\",
-      "outputPath": "D:\\G1_RadioCabs\\RadioCabs_v2\\CompanyServices\\obj\\",
+      "outputPath": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\CompanyServices\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11158,8 +11158,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\G1_RadioCabs\\RadioCabs_v2\\RedisClient\\RedisClient.csproj": {
-              "projectPath": "D:\\G1_RadioCabs\\RadioCabs_v2\\RedisClient\\RedisClient.csproj"
+            "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\RedisClient\\RedisClient.csproj": {
+              "projectPath": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\RedisClient\\RedisClient.csproj"
             }
           }
         }

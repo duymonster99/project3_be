@@ -30,7 +30,7 @@ namespace CompanyServices.Controllers
         // CRUD 
         // Update company info
         [HttpPut("company/{id}/update")]
-        public async Task<IActionResult> UpdateCompanyInfo(int id, [FromBody] CompanyInfoDto companyInfoDto)
+        public async Task<IActionResult> UpdateCompanyInfo(int id, [FromForm] CompanyInfoDto companyInfoDto, IFormFile? formFile)
         {
             try
             {
@@ -110,23 +110,11 @@ namespace CompanyServices.Controllers
                 }
 
                 // Cập nhật hình ảnh của công ty
-                //if (formFile != null && formFile.Length > 0)
-                //{
-                //    var imagePath = await FileUpload.SaveImageAsync("CompanyImageProfile", formFile);
-                //    company.CompanyImageUrl = imagePath;
-                //}
-
-                //if (companyInfoDto.IsActive != null)
-                //{
-                //    company.IsActive = companyInfoDto.IsActive;
-                //}
-
-                // if (companyInfoDto.CompanyImage != null && companyInfoDto.CompanyImage.Length > 0)
-                // {
-                //     // Assuming you have a method to upload the image and get the URL
-                //     var contentType = BlobContentTypes.GetContentType(companyInfoDto.CompanyImage);
-                //     company.CompanyImageUrl = await _blobServices.UploadBlobWithContentTypeAsync(companyInfoDto.CompanyImage, contentType);
-                // }
+                if (formFile != null && formFile.Length > 0)
+                {
+                    var imagePath = await FileUpload.SaveImageAsync("CompanyImageProfile", formFile);
+                    company.CompanyImageUrl = imagePath;
+                }
 
                 _dbContext.Companies.Update(company);
                 await _dbContext.SaveChangesAsync();

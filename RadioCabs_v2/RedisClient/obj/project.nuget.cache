@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MaD4UeVcBSFg+2ZxudwIL4BmtnVKAhurV2u3Rh9k3l7/P1Fcb5Uo/pB96a3WvQIFb0TkrMHJCf+jNd41pz9MNQ==",
+  "dgSpecHash": "Sr/AjKsMPNgQmthvyQmTbZd0iPmK2xWZIDhF9+UcAn7QYYplR4PcM3B1ZplaDIa7OAmjh8IE4UlXB3sdkd2d1A==",
   "success": true,
-  "projectFilePath": "D:\\G1_RadioCabs\\RadioCabs_v2\\RedisClient\\RedisClient.csproj",
+  "projectFilePath": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\RedisClient\\RedisClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Monster\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Monster\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

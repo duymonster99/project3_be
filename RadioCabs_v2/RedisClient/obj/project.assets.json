@@ -1404,11 +1404,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\G1_RadioCabs\\RadioCabs_v2\\RedisClient\\RedisClient.csproj",
+      "projectUniqueName": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\RedisClient\\RedisClient.csproj",
       "projectName": "RedisClient",
-      "projectPath": "D:\\G1_RadioCabs\\RadioCabs_v2\\RedisClient\\RedisClient.csproj",
+      "projectPath": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\RedisClient\\RedisClient.csproj",
       "packagesPath": "C:\\Users\\Monster\\.nuget\\packages\\",
-      "outputPath": "D:\\G1_RadioCabs\\RadioCabs_v2\\RedisClient\\obj\\",
+      "outputPath": "C:\\Users\\Monster\\Documents\\GitHub\\project3_be\\RadioCabs_v2\\RedisClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

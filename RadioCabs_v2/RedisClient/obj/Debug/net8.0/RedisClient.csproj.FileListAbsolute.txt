@@ -37,3 +37,16 @@ D:\G1_RadioCabs\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.dll
 D:\G1_RadioCabs\RadioCabs_v2\RedisClient\obj\Debug\net8.0\refint\RedisClient.dll
 D:\G1_RadioCabs\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.pdb
 D:\G1_RadioCabs\RadioCabs_v2\RedisClient\obj\Debug\net8.0\ref\RedisClient.dll
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\bin\Debug\net8.0\RedisClient.deps.json
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\bin\Debug\net8.0\RedisClient.dll
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\bin\Debug\net8.0\RedisClient.pdb
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.csproj.AssemblyReference.cache
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.AssemblyInfoInputs.cache
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.AssemblyInfo.cs
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.csproj.CoreCompileInputs.cache
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.sourcelink.json
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.dll
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\refint\RedisClient.dll
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\RedisClient.pdb
+C:\Users\Monster\Documents\GitHub\project3_be\RadioCabs_v2\RedisClient\obj\Debug\net8.0\ref\RedisClient.dll
