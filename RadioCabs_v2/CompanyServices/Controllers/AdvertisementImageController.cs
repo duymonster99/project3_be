@@ -30,7 +30,7 @@ namespace CompanyServices.Controllers
 
         // Create new advertisement image
         [HttpPost("create")]
-        public async Task<IActionResult> CreateAdvertisementImage([FromForm] AdvertisementImageDto imageDto, IFormFile formFile)
+        public async Task<IActionResult> CreateAdvertisementImage([FromBody] AdvertisementImageDto imageDto)
         {
             try
             {
@@ -44,12 +44,9 @@ namespace CompanyServices.Controllers
                     });
                 }
 
-                var imageUrl = await FileUpload.SaveImageAsync("AdvertisementImages", formFile);
-
                 var advertisementImage = new AdvertisementImage
                 {
                     CompanyId = imageDto.CompanyId,
-                    ImageUrl = imageUrl,
                     Description = imageDto.Description
                 };
 
@@ -158,7 +155,7 @@ namespace CompanyServices.Controllers
 
         // Update advertisement image
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateAdvertisementImage(int id, [FromForm] AdvertisementImageDto imageDto)
+        public async Task<IActionResult> UpdateAdvertisementImage(int id, [FromForm] AdvertisementImageDto imageDto, IFormFile formFile)
         {
             try
             {
@@ -172,9 +169,9 @@ namespace CompanyServices.Controllers
                     });
                 }
 
-                if (imageDto.ImageFile != null && imageDto.ImageFile.Length > 0)
+                if (formFile != null && formFile.Length > 0)
                 {
-                    var imageUrl = await UploadImageAsync(imageDto.ImageFile);
+                    var imageUrl = await FileUpload.SaveImageAsync("AdvertisementImages", formFile);
                     advertisementImage.ImageUrl = imageUrl;
                 }
 

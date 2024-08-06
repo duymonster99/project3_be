@@ -31,5 +31,24 @@
                 throw new Exception("An error occurred while saving the image.", ex);
             }
         }
+
+        public static void DeleteImage(string imagePath)
+        {
+            try
+            {
+                var exactPath = imagePath.Substring(_rootUrl.Length).TrimStart('/');
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), exactPath);
+
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log exception here
+                throw new Exception("An error occurred while deleting the image.", ex);
+            }
+        }
     }
 }
