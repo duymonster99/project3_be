@@ -13,6 +13,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<UserInfo> UserInfos { get; set; }
     public DbSet<Driver> Drivers { get; set; }
     public DbSet<DriverInfo> DriverInfos { get; set; }
+    public DbSet<FeedbackDriver> FeedbackDrivers { get; set; }
+    public DbSet<Booking> Bookings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,5 +31,15 @@ public class ApplicationDbContext : DbContext
             .HasOne(d => d.DriverInfo)
             .WithOne(di => di.Driver)
             .HasForeignKey<DriverInfo>(di => di.DriverId);
+
+        modelBuilder.Entity<Driver>()
+            .HasMany(d => d.FeedbackDrivers)
+            .WithOne(f => f.Driver)
+            .HasForeignKey(f => f.DriverId);
+
+        modelBuilder.Entity<Driver>()
+            .HasOne(d => d.Booking)
+            .WithOne(b => b.Driver)
+            .HasForeignKey<Booking>(b => b.DriverId);
     }
 }

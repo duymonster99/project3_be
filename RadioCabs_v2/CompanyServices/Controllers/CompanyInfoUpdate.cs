@@ -30,7 +30,7 @@ namespace CompanyServices.Controllers
         // CRUD 
         // Update company info
         [HttpPut("company/{id}/update")]
-        public async Task<IActionResult> UpdateCompanyInfo(int id, [FromForm] CompanyInfoDto companyInfoDto, IFormFile? formFile)
+        public async Task<IActionResult> UpdateCompanyInfo(int id, [FromBody] CompanyInfoDto companyInfoDto)
         {
             try
             {
@@ -59,9 +59,9 @@ namespace CompanyServices.Controllers
                 //     company.CompanyPassword = companyInfoDto.CompanyPassword;
                 // }
                 
-                if (!string.IsNullOrEmpty(companyInfoDto.ContactPersonName))
+                if (!string.IsNullOrEmpty(companyInfoDto.ContactPerson))
                 {
-                    company.ContactPerson = companyInfoDto.ContactPersonName;
+                    company.ContactPerson = companyInfoDto.ContactPerson;
                 }
 
                 if (!string.IsNullOrEmpty(companyInfoDto.Designation))
@@ -104,9 +104,50 @@ namespace CompanyServices.Controllers
                     company.MembershipType = companyInfoDto.MembershipType;
                 }
 
+                if (!string.IsNullOrEmpty(companyInfoDto.Description))
+                {
+                    company.Description = companyInfoDto.Description;
+                }
+
                 if (!string.IsNullOrEmpty(companyInfoDto.IsActive.ToString())) //
                 {
                     company.IsActive = companyInfoDto.IsActive;
+                }
+
+                _dbContext.Companies.Update(company);
+                await _dbContext.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    StatusCode = 200,
+                    Message = "Company updated successfully",
+                    Data = company
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    StatusCode = 500,
+                    Message = "An error occurred while updating the company",
+                    Error = ex.Message
+                });
+            }
+        }
+
+        [HttpPut("company/{id}/update-image")]
+        public async Task<IActionResult> UpdateCompanyImage(int id, [FromForm] IFormFile? formFile)
+        {
+            try
+            {
+                var company = await _dbContext.Companies.FirstOrDefaultAsync(c => c.Id == id);
+                if (company == null)
+                {
+                    return NotFound(new
+                    {
+                        StatusCode = 404,
+                        Message = "Company not found"
+                    });
                 }
 
                 // Cập nhật hình ảnh của công ty
@@ -126,8 +167,7 @@ namespace CompanyServices.Controllers
                     Data = company
                 });
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 return StatusCode(500, new
                 {
                     StatusCode = 500,

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthenticationServices.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240801075830_RadioAdminTb")]
-    partial class RadioAdminTb
+    [Migration("20240809133406_AdminTb")]
+    partial class AdminTb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,6 +21,59 @@ namespace AuthenticationServices.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("AuthenticationServices.Models.Booking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DriverId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FromAddress")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FromCity")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FromDistrict")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FromWard")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool?>("IsNew")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool?>("IsReceive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("Mobile")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ToAddress")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ToCity")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ToDistrict")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ToWard")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DriverId")
+                        .IsUnique();
+
+                    b.ToTable("Bookings");
+                });
 
             modelBuilder.Entity("AuthenticationServices.Models.Driver", b =>
                 {
@@ -46,8 +99,14 @@ namespace AuthenticationServices.Migrations
                     b.Property<bool?>("IsActive")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<bool?>("IsOnline")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Password")
                         .HasColumnType("longtext");
+
+                    b.Property<decimal?>("Rating")
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<string>("RefreshToken")
                         .HasColumnType("longtext");
@@ -95,6 +154,37 @@ namespace AuthenticationServices.Migrations
                     b.HasKey("DriverId");
 
                     b.ToTable("DriverInfos");
+                });
+
+            modelBuilder.Entity("AuthenticationServices.Models.FeedbackDriver", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("DriverId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal?>("Rating")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DriverId");
+
+                    b.ToTable("FeedbackDrivers");
                 });
 
             modelBuilder.Entity("AuthenticationServices.Models.User", b =>
@@ -166,6 +256,15 @@ namespace AuthenticationServices.Migrations
                     b.ToTable("UserInfos");
                 });
 
+            modelBuilder.Entity("AuthenticationServices.Models.Booking", b =>
+                {
+                    b.HasOne("AuthenticationServices.Models.Driver", "Driver")
+                        .WithOne("Booking")
+                        .HasForeignKey("AuthenticationServices.Models.Booking", "DriverId");
+
+                    b.Navigation("Driver");
+                });
+
             modelBuilder.Entity("AuthenticationServices.Models.DriverInfo", b =>
                 {
                     b.HasOne("AuthenticationServices.Models.Driver", "Driver")
@@ -173,6 +272,15 @@ namespace AuthenticationServices.Migrations
                         .HasForeignKey("AuthenticationServices.Models.DriverInfo", "DriverId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Driver");
+                });
+
+            modelBuilder.Entity("AuthenticationServices.Models.FeedbackDriver", b =>
+                {
+                    b.HasOne("AuthenticationServices.Models.Driver", "Driver")
+                        .WithMany("FeedbackDrivers")
+                        .HasForeignKey("DriverId");
 
                     b.Navigation("Driver");
                 });
@@ -190,7 +298,11 @@ namespace AuthenticationServices.Migrations
 
             modelBuilder.Entity("AuthenticationServices.Models.Driver", b =>
                 {
+                    b.Navigation("Booking");
+
                     b.Navigation("DriverInfo");
+
+                    b.Navigation("FeedbackDrivers");
                 });
 
             modelBuilder.Entity("AuthenticationServices.Models.User", b =>

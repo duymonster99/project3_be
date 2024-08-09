@@ -9,6 +9,7 @@ using AuthenticationServices.Services;
 using AuthenticationServices.Services;
 using MongoDB.Driver.Core.Configuration;
 using AuthenticationServices.Models;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -76,6 +77,13 @@ app.UseCors(corsPolicyBuilder => corsPolicyBuilder
     .AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader());
+
+// ADD LOGIC IMAGE UPLOAD --------- USE THIS
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "AdminImages")),
+    RequestPath = "/AdminImages"
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

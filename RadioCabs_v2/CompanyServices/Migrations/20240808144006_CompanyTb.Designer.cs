@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompanyServices.Migrations
 {
     [DbContext(typeof(CompanyDbContext))]
-    [Migration("20240729155356_RadioCompanyTb")]
-    partial class RadioCompanyTb
+    [Migration("20240808144006_CompanyTb")]
+    partial class CompanyTb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,6 +84,9 @@ namespace CompanyServices.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("ContactPersonMobile")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Description")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Designation")

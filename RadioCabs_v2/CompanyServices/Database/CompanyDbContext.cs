@@ -14,6 +14,7 @@ public class CompanyDbContext : DbContext
     public DbSet<CompanyLocationService> CompanyLocationServices { get; set; }
     public DbSet<AdvertisementImage> AdvertisementImages { get; set; }
     public DbSet<Payment> Payments { get; set; }
+  
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

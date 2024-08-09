@@ -32,7 +32,9 @@ public class Company
     public string? CompanyDistrict { get; set; }
     public string? CompanyCity { get; set; }
     
-    public bool? IsActive { get; set; } // 
+    public bool? IsActive { get; set; }
+    [DataType(DataType.MultilineText)]
+    public string? Description { get; set; }
     
     // Service Reference
     public string? MembershipType { get; set; } //

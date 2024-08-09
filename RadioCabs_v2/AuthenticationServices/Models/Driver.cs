@@ -16,9 +16,15 @@ public class Driver
     public bool? IsActive { get; set; }
     public string? Role { get; set; }
     public int? CompanyId { get; set; }
-    
+
+    [Column(TypeName = "decimal(10,2)")]
+    public decimal? Rating { get; set; }
+    public bool? IsOnline { get; set; }
+
     public string? RefreshToken { get; set; }
     public DateTime? RefreshTokenExpiryTime { get; set; }
     
     public virtual DriverInfo? DriverInfo { get; set; }
+    public virtual Booking? Booking { get; set; }
+    public virtual ICollection<FeedbackDriver>? FeedbackDrivers { get; set; }
 }

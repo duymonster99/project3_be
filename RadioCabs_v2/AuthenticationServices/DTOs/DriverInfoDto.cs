@@ -14,6 +14,8 @@ public class DriverInfoDto
     public string? Street { get; set; }
     public string? City { get; set; }
     public string? RegistrationCar { get; set; }
+    public decimal? Rating { get; set; }
+    public bool? IsOnline { get; set; }
     public IFormFile? DriverPersonalImage { get; set; }
     public IFormFile? DriverLicenseImage { get; set; }
 }

@@ -17,6 +17,7 @@ public class DriverInfo
     public string? RegistrationCar { get; set; }
     public string? DriverPersonalImage { get; set; }
     public string? DriverLicenseImage { get; set; }
+    
     [JsonIgnore]
     public virtual Driver? Driver { get; set; }
 }

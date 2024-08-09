@@ -83,6 +83,9 @@ namespace CompanyServices.Migrations
                     b.Property<string>("ContactPersonMobile")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Designation")
                         .HasColumnType("longtext");
 

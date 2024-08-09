@@ -29,4 +29,8 @@
       <ProjectReference Include="..\RedisClient\RedisClient.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="CompanyImages\" />
+    </ItemGroup>
+
 </Project>

@@ -2,6 +2,7 @@ using AuthenticationServices.Database;
 using AuthenticationServices.DTOs;
 using AuthenticationServices.Helper;
 using AuthenticationServices.Models;
+using CompanyServices.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -53,7 +54,7 @@ namespace AuthenticationServices.Controllers
         {
             try
             {
-                var driver = await _dbContext.Drivers.Include(d => d.DriverInfo).FirstOrDefaultAsync(d => d.Id == id);
+                var driver = await _dbContext.Drivers.Include(d => d.DriverInfo).Include(d => d.FeedbackDrivers).FirstOrDefaultAsync(d => d.Id == id);
                 if (driver == null)
                 {
                     return NotFound(new
@@ -164,17 +165,15 @@ namespace AuthenticationServices.Controllers
                 driver.DriverInfo.City = driverInfoDto.City;
             }
 
-            // if (driverInfoDto.DriverPersonalImage != null)
-            // {
-            //     var contentType = BlobContentTypes.GetContentType(driverInfoDto.DriverPersonalImage);
-            //     driver.DriverInfo.DriverPersonalImage = await _blobServices.UploadBlobWithContentTypeAsync(driverInfoDto.DriverPersonalImage, contentType);
-            // }
+            if (!string.IsNullOrEmpty(driverInfoDto.Rating.ToString()))
+            {
+                driver.Rating = driverInfoDto.Rating;
+            }
 
-            // if (driverInfoDto.DriverLicenseImage != null)
-            // {
-            //     var contentType = BlobContentTypes.GetContentType(driverInfoDto.DriverLicenseImage);
-            //     driver.DriverInfo.DriverLicenseImage = await _blobServices.UploadBlobWithContentTypeAsync(driverInfoDto.DriverLicenseImage, contentType);
-            // }
+            if (!string.IsNullOrEmpty(driverInfoDto.IsOnline.ToString()))
+            {
+                driver.IsOnline = driverInfoDto.IsOnline;
+            }
 
             try
             {

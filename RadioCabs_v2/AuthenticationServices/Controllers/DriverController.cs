@@ -2,6 +2,7 @@ using AuthenticationServices.Database;
 using AuthenticationServices.DTOs;
 using AuthenticationServices.Helper;
 using AuthenticationServices.Models;
+using CompanyServices.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,7 @@ namespace AuthenticationServices.Controllers
         {
             try
             {
-                var existingDriver = await _dbContext.Drivers.FirstOrDefaultAsync(d => d.DriverMobile == CheckingPattern.AddPrefixMobile(driverDto.DriverMobile));
+                var existingDriver = await _dbContext.Drivers.Include(d => d.DriverInfo).FirstOrDefaultAsync(d => d.DriverMobile == CheckingPattern.AddPrefixMobile(driverDto.DriverMobile));
                 if (existingDriver != null)
                 {
                     return BadRequest(new
@@ -49,6 +50,8 @@ namespace AuthenticationServices.Controllers
                     Password = PasswordHelper.HashPassword(driverDto.Password),
                     CompanyId = driverDto.CompanyId,
                     IsActive = false,
+                    Rating = 4,
+                    IsOnline = false,
                     Role = "Driver"
                 };
 
@@ -124,7 +127,7 @@ namespace AuthenticationServices.Controllers
         {
             try
             {
-                var drivers = await _dbContext.Drivers.Where(d => d.CompanyId == companyId).ToListAsync();
+                var drivers = await _dbContext.Drivers.Where(d => d.CompanyId == companyId).Include(d => d.FeedbackDrivers).ToListAsync();
                 if (drivers == null || !drivers.Any())
                 {
                     return NotFound(new
@@ -140,6 +143,162 @@ namespace AuthenticationServices.Controllers
             {
                 Console.WriteLine(e);
                 return BadRequest(new { Status = 400, Message = "Error: " + e.Message });
+            }
+        }
+
+        [HttpPut("driver/{id}/update")]
+        public async Task<IActionResult> UpdateDriver(int id, [FromForm] IFormFile? formFileProfile, IFormFile? formFileLicense)
+        {
+            var driver = await _dbContext.Drivers.Include(d => d.DriverInfo).FirstOrDefaultAsync(d => d.Id == id);
+            if (driver == null)
+            {
+                return NotFound(new
+                {
+                    Status = 404,
+                    Message = "Driver not found"
+                });
+            }
+
+            // Ensure DriverInfo is not null
+            if (driver.DriverInfo == null)
+            {
+                driver.DriverInfo = new DriverInfo
+                {
+                    DriverId = driver.Id
+                };
+                _dbContext.DriverInfos.Add(driver.DriverInfo);
+            }
+            
+            if (formFileProfile != null && formFileProfile.Length > 0)
+            {
+                var imageUrl = await FileUpload.SaveImageAsync("DriverProfileAvatars", formFileProfile);
+                driver.DriverInfo.DriverPersonalImage = imageUrl;
+            }
+
+            if (formFileLicense != null && formFileLicense.Length > 0)
+            {
+                var imageUrl = await FileUpload.SaveImageAsync("DriverProfileLicense", formFileLicense);
+                driver.DriverInfo.DriverLicenseImage = imageUrl;
+            }
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+                return Ok(new
+                {
+                    Status = 200,
+                    Message = "Driver updated successfully"
+                });
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                if (!_dbContext.Drivers.Any(d => d.Id == id))
+                {
+                    return NotFound(new
+                    {
+                        Status = 404,
+                        Message = "Driver not found - api/v1/admin/updateDriver - AdminController/AuthenticationService"
+                    });
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    Status = 500,
+                    Message = "Error! Can't update data from api/v1/admin/updateDriver - AdminController/AuthenticationServices"
+                });
+            }
+        }
+
+        [HttpPost("driver/feedback/create")]
+        public async Task<IActionResult> CreateFeedbackDriver(FeedbackDriverDto feedbackDriverDto)
+        {
+            try
+            {
+                var feedbackDriver = new FeedbackDriver
+                {
+                    CompanyId = feedbackDriverDto.CompanyId,
+                    DriverId = feedbackDriverDto.DriverId,
+                    Name = feedbackDriverDto.Name,
+                    Email = feedbackDriverDto.Email,
+                    Description = feedbackDriverDto.Description,
+                    Rating = feedbackDriverDto.Rating,
+                };
+
+                await _dbContext.FeedbackDrivers.AddAsync(feedbackDriver);
+                await _dbContext.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    StatusCode = 200,
+                    Message = "Successfully"
+                });
+            } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    StatusCode = 500,
+                    Message = "An error occurred while creating the advertisement image",
+                    Error = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("driver/{companyId}/feedback")]
+        public async Task<IActionResult> GetFeedbackDriverByCompanyId(int companyId)
+        {
+            try
+            {
+                var drivers = await _dbContext.FeedbackDrivers.Where(f => f.CompanyId == companyId).ToListAsync();
+                if (drivers == null || !drivers.Any())
+                {
+                    return NotFound(new
+                    {
+                        Status = 404,
+                        Message = "No drivers found for this company."
+                    });
+                }
+
+                return Ok(new { Status = 200, Message = "Success", Drivers = drivers });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Status = 400, Message = "Error: " + ex.Message });
+            }
+        }
+
+        [HttpPost("driver/create/booking")]
+        public async Task<IActionResult> CreateBooking (BookingDto bookingDto)
+        {
+            try
+            {
+                var booking = new Booking
+                {
+                    Name = bookingDto.Name,
+                    Mobile = bookingDto.Mobile,
+                    FromCity = bookingDto.FromCity,
+                    FromDistrict = bookingDto.FromDistrict,
+                    FromWard = bookingDto.FromWard,
+                    FromAddress = bookingDto.FromAddress,
+                    ToCity = bookingDto.ToCity,
+                    ToDistrict = bookingDto.ToDistrict,
+                    ToWard = bookingDto.ToWard,
+                    ToAddress = bookingDto.ToAddress,
+                    IsReceive = false,
+                    IsNew = true,
+                    DriverId = bookingDto.DriverId,
+                };
+                await _dbContext.Bookings.AddAsync(booking);
+                await _dbContext.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    StatusCode = 200,
+                    Message = "Successfully"
+                });
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(new { Status = 400, Message = "Error: " + ex.Message });
             }
         }
 
